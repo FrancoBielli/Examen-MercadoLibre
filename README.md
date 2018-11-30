@@ -24,9 +24,18 @@ Y configurar la propiedad <code>spring.datasource.url=</code> en el archivo de p
 <br>
 El método evalúa si el ADN ingresado corresponde a un mutante o a un humano. <br />
 <ul>
-<li>Si corresponde a un mutante devuelve un Status 200 OK,</li>
+<li>Si corresponde a un mutante* devuelve un Status 200 OK</li>
 <li>Si corresponde a un humano devuelve un Status 403 Forbidden </li>
+<li>Si se ingresa una cadena que no puede ser procesada devuelve un Status 400 Bad Request:<br />
+  Las cadenas que no pueden ser procesadas son:
+  <ul>
+    <li>Cadenas con caracteres diferentes a A, T, G o C</li>
+    <li>Cadenas que tengan menos de 4 filas, ya que no pueden ser evaluadas de forma vertical ni oblícua</li>
+    <li>Cadenas que no sean del formato NxN</li>
+  </ul>
+  </li>
 </ul>
+<em>*El sistema verifica que hayan 4 letras iguales consecutivas en cualquier dirección (horizontal, vertical y oblícua en los dos sentidos [de derecha a izquierda y de izquierda a derecha]).</em>
 <br />
 <br>
 <strong>Método: <code>GET</code></strong><br />
