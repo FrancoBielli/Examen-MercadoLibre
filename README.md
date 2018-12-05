@@ -8,7 +8,18 @@
 <code>/api/stats</code>
 </p>
 <p>
-<h4>Instrucciones de Uso:</h4>
+<h4>Instrucciones para instalar:</h4>
+<br />
+Enviroment<br />
+<ul>
+  <li>o	Java 8</li>
+  <li>Maven</li>
+  <li>Spring-boot 1.5.9</li>
+  <li>MySQL</li>
+</ul>
+Situarse en el directorio deseado y clonar el repositorio:<br>
+<code>$ git clone https://github.com/FrancoBielli/Examen-MercadoLibre.git</code>
+E importarlo en su IDE de Java.
 <br />
 Crear la base de datos "mutantes" y la tabla "persona" ejecutando el siguiente código SQL:
 <br />
@@ -21,10 +32,17 @@ CREATE TABLE mutantes.persona (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 </code>
 <br />
+Configurar los siguientes campos de la base de datos en el archivo application.properties:<br />
+<ul>
+  <li><code>Usuario: spring.datasource.username=</code></li>
+  <li><code>Contraseña: spring.datasource.password=</code></li>
+  <li>*<code>spring.datasource.url=</code></li>
+</ul>
+<em>*Solo modificar en el caso de que su aplicación no se ejecute en localhost:8080 y su base de datos MySQL no esté en el puerto 3306</em>
 <br />
-Y configurar la propiedad <code>spring.datasource.url=</code> en el archivo de propiedades <code>application.properties</code>
-<br />
-
+</p>
+<p>
+<h4>Instrucciones de Uso:</h4>
 <strong>Método: <code>POST</code></strong> <br />
 <strong>Endpoint:</strong> <code>/api/mutante</code> <br />
 <strong>Entrada de ejemplo:</strong> <code>{"dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]}</code> <br />
@@ -37,12 +55,12 @@ El método evalúa si el ADN ingresado corresponde a un mutante o a un humano. <
   Las cadenas que no pueden ser procesadas son:
   <ul>
     <li>Cadenas con caracteres diferentes a A, T, G o C</li>
-    <li>Cadenas que tengan menos de 4 filas, ya que no pueden ser evaluadas de forma vertical ni oblícua</li>
+    <li>Cadenas que tengan menos de 4 filas, ya que no pueden ser evaluadas de forma vertical ni oblicua</li>
     <li>Cadenas que no sean del formato NxN</li>
   </ul>
   </li>
 </ul>
-<em>*El sistema verifica que hayan 4 letras iguales consecutivas en cualquier dirección (horizontal, vertical y oblícua en los dos sentidos [de derecha a izquierda y de izquierda a derecha]).</em>
+<em>*El sistema verifica que haya 4 letras iguales consecutivas en cualquier dirección (horizontal, vertical y oblicua en los dos sentidos [de derecha a izquierda y de izquierda a derecha]).</em>
 <br />
 <br>
 <strong>Método: <code>GET</code></strong><br />
