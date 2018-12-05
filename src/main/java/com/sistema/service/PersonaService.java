@@ -5,6 +5,7 @@ import com.sistema.model.Persona;
 import java.math.BigDecimal;
 
 public interface PersonaService {
+
     Persona findById(String adn);
 
     Boolean personaExiste(String id);
@@ -12,6 +13,4 @@ public interface PersonaService {
     Persona savePersona(Persona persona);
 
     BigDecimal contarPersonas(Boolean mutante);
-
-    String calcularRatio();
 }

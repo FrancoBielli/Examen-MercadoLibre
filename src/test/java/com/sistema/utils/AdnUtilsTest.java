@@ -1,6 +1,6 @@
-package com.sistema.service.impl;
+package com.sistema.utils;
 
-import com.sistema.model.Adn;
+import com.sistema.dto.Adn;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,7 +8,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class AdnServiceImplTest {
+public class AdnUtilsTest {
+
+    public AdnUtils adnUtils = new AdnUtils();
 
     @Test
     public void verificarMatrizSuccess() {
@@ -30,7 +32,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        Boolean resultado = new AdnServiceImpl().verificarMatriz(adn);
+        Boolean resultado = adnUtils.verificarMatriz(adn);
 
         assertEquals(resultado, true);
     }
@@ -48,7 +50,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        Boolean resultado = new AdnServiceImpl().verificarMatriz(adn);
+        Boolean resultado = adnUtils.verificarMatriz(adn);
 
         assertEquals(resultado, false);
     }
@@ -69,7 +71,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        Boolean resultado = new AdnServiceImpl().verificarMatriz(adn);
+        Boolean resultado = adnUtils.verificarMatriz(adn);
 
         assertEquals(resultado, false);
     }
@@ -91,7 +93,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        Boolean resultado = new AdnServiceImpl().verificarMatriz(adn);
+        Boolean resultado = adnUtils.verificarMatriz(adn);
 
         assertEquals(resultado, false);
     }
@@ -113,7 +115,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarHorizontal(adn);
+        int resultado = adnUtils.contarHorizontal(adn);
 
         assertEquals(resultado, 1);
     }
@@ -136,7 +138,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarHorizontal(adn);
+        int resultado = adnUtils.contarHorizontal(adn);
 
         assertEquals(resultado, 2);
 
@@ -160,7 +162,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarHorizontal(adn);
+        int resultado = adnUtils.contarHorizontal(adn);
 
         assertEquals(resultado, 0);
     }
@@ -181,7 +183,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarVertical(adn, 0);
+        int resultado = adnUtils.contarVertical(adn, 0);
 
         assertEquals(resultado, 1);
     }
@@ -203,7 +205,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarVertical(adn, 1);
+        int resultado = adnUtils.contarVertical(adn, 1);
 
         assertEquals(resultado, 2);
     }
@@ -225,7 +227,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarVertical(adn, 2);
+        int resultado = adnUtils.contarVertical(adn, 2);
 
         assertEquals(resultado, 2);
     }
@@ -247,7 +249,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarVertical(adn, 0);
+        int resultado = adnUtils.contarVertical(adn, 0);
 
         assertEquals(resultado, 0);
     }
@@ -271,7 +273,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalDerecha(adn, 0);
+        int resultado = adnUtils.contarDiagonalDerecha(adn, 0);
 
         assertEquals(resultado, 1);
     }
@@ -293,7 +295,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalDerecha(adn, 2);
+        int resultado = adnUtils.contarDiagonalDerecha(adn, 2);
 
         assertEquals(resultado, 2);
     }
@@ -315,7 +317,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalDerecha(adn, 0);
+        int resultado = adnUtils.contarDiagonalDerecha(adn, 0);
 
         assertEquals(resultado, 0);
     }
@@ -337,7 +339,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalDerecha(adn, 0);
+        int resultado = adnUtils.contarDiagonalDerecha(adn, 0);
 
         assertEquals(resultado, 2);
     }
@@ -359,7 +361,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalIzquierda(adn, 0);
+        int resultado = adnUtils.contarDiagonalIzquierda(adn, 0);
 
         assertEquals(resultado, 0);
     }
@@ -381,7 +383,7 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalIzquierda(adn, 2);
+        int resultado = adnUtils.contarDiagonalIzquierda(adn, 2);
 
         assertEquals(resultado, 2);
     }
@@ -403,8 +405,37 @@ public class AdnServiceImplTest {
 
         adn.setDna(dna);
 
-        int resultado = new AdnServiceImpl().contarDiagonalIzquierda(adn, 0);
+        int resultado = adnUtils.contarDiagonalIzquierda(adn, 0);
 
         assertEquals(resultado, 2);
+    }
+
+    @Test
+    public void parseJsonAdnValido() {
+
+        String adnJson = "{\"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"]}";
+
+        Adn adn = new Adn();
+        List<String> ListAdn = new ArrayList<>();
+        ListAdn.add("ATGCGA");
+        ListAdn.add("CAGTGC");
+        ListAdn.add("TTATGT");
+        ListAdn.add("AGAAGG");
+        ListAdn.add("CCCCTA");
+        ListAdn.add("TCACTG");
+        adn.setDna(ListAdn);
+
+        Adn dna = adnUtils.parseJson(adnJson);
+
+        assertEquals(adn.getDna(), dna.getDna());
+    }
+
+    @Test
+    public void parseJsonAdnInvalido() {
+
+        String adnJson = "";
+        Adn dna = adnUtils.parseJson(adnJson);
+
+        assertNull(dna);
     }
 }

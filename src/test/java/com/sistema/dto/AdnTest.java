@@ -1,5 +1,6 @@
-package com.sistema.model;
+package com.sistema.dto;
 
+import com.sistema.dto.Adn;
 import org.junit.Test;
 
 import java.util.ArrayList;

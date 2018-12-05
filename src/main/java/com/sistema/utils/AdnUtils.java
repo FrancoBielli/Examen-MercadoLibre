@@ -1,16 +1,31 @@
-package com.sistema.service.impl;
+package com.sistema.utils;
 
-import com.sistema.model.Adn;
-import com.sistema.service.AdnService;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.sistema.dto.Adn;
+import org.springframework.stereotype.Component;
 
-@Service
-class AdnServiceImpl implements AdnService {
+@Component
+public class AdnUtils {
+
+    //Convertir String de JSON en un array de Strings.
+    public Adn parseJson(String cadenaADN)
+    {
+        try
+        {
+            ObjectMapper oMapper = new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+            return oMapper.readValue(cadenaADN, Adn.class);
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
 
 
     //Verificar que la matriz ingresada cumpla con ciertos requisitos básicos antes de verificar si es mutante o no
-    @Override
     public boolean verificarMatriz(Adn adn)
     {
         return rangoMinimo(adn) && verificarCaracteres(adn) && matrizCuadrada(adn);
@@ -55,7 +70,6 @@ class AdnServiceImpl implements AdnService {
         return A == B && A == C && A == D;
     }
 
-    @Override
     public int contarHorizontal(Adn adn)
     {
         int cont = 0;
@@ -79,7 +93,6 @@ class AdnServiceImpl implements AdnService {
     }
 
     //Verifico de forma vertical
-    @Override
     public int contarVertical(Adn adn, int cont)
     {
         if(verificarContador(cont))

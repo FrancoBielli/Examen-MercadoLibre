@@ -1,14 +1,13 @@
 package com.sistema.service.impl;
 
-import com.sistema.dto.Estadistica;
 import com.sistema.model.Persona;
 import com.sistema.repository.PersonaRepository;
 import com.sistema.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 @Service
 public class PersonaServiceImpl implements PersonaService {
@@ -51,27 +50,5 @@ public class PersonaServiceImpl implements PersonaService {
     public BigDecimal contarPersonas(Boolean mutante)
     {
         return new BigDecimal(personaRepository.countPersonaByMutante(mutante));
-    }
-
-    @Override
-    public String calcularRatio(){
-        BigDecimal mutantes = contarPersonas(true);
-        BigDecimal humanos = contarPersonas(false);
-
-        Estadistica estadistica = new Estadistica();
-        estadistica.setHumanos(humanos);
-        estadistica.setMutantes(mutantes);
-        estadistica.setRatio(BigDecimal.ZERO);
-
-        if(humanos.compareTo(BigDecimal.ZERO) != 0 && mutantes.compareTo(BigDecimal.ZERO) != 0)
-        {
-            estadistica.setRatio(mutantes.divide(humanos, 1, RoundingMode.HALF_EVEN));
-
-            return estadistica.toString();
-        }
-        else
-        {
-            return estadistica.toString();
-        }
     }
 }

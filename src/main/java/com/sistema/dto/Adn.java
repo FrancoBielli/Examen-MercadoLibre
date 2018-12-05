@@ -1,4 +1,4 @@
-package com.sistema.model;
+package com.sistema.dto;
 
 import java.util.List;
 
