@@ -10,9 +10,16 @@
 <p>
 <h4>Instrucciones de Uso:</h4>
 <br />
-Crear la base de datos "mutantes" ejecutando el siguiente código SQL:
+Crear la base de datos "mutantes" y la tabla "persona" ejecutando el siguiente código SQL:
 <br />
-<code>CREATE SCHEMA IF NOT EXISTS mutantes</code>
+<code>CREATE SCHEMA prueba;
+
+CREATE TABLE prueba.persona (
+  adn varchar(255) NOT NULL,
+  mutante bit(1) NOT NULL,
+  PRIMARY KEY (`adn`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+</code>
 <br />
 <br />
 Y configurar la propiedad <code>spring.datasource.url=</code> en el archivo de propiedades <code>application.properties</code>
