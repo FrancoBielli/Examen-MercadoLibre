@@ -19,7 +19,9 @@ Enviroment<br />
 </ul>
 Situarse en el directorio deseado y clonar el repositorio:<br>
 <code>$ git clone https://github.com/FrancoBielli/Examen-MercadoLibre.git</code>
+<br />
 E importarlo en su IDE de Java.
+<br />
 <br />
 Crear la base de datos "mutantes" y la tabla "persona" ejecutando el siguiente código SQL:
 <br />
