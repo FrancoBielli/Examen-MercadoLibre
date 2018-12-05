@@ -12,9 +12,9 @@
 <br />
 Crear la base de datos "mutantes" y la tabla "persona" ejecutando el siguiente código SQL:
 <br />
-<code>CREATE SCHEMA prueba;
+<code>CREATE SCHEMA mutantes;
 
-CREATE TABLE prueba.persona (
+CREATE TABLE mutantes.persona (
   adn varchar(255) NOT NULL,
   mutante bit(1) NOT NULL,
   PRIMARY KEY (`adn`)
