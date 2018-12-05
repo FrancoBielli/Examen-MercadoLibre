@@ -12,7 +12,7 @@
 <br />
 Enviroment<br />
 <ul>
-  <li>o	Java 8</li>
+  <li>Java 8</li>
   <li>Maven</li>
   <li>Spring-boot 1.5.9</li>
   <li>MySQL</li>
