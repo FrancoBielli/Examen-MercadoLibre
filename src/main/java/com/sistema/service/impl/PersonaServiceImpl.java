@@ -33,17 +33,7 @@ public class PersonaServiceImpl implements PersonaService {
 
     @Override
     public Persona savePersona(Persona persona) {
-        //Antes de guardar la persona me fijo si existe
-        if(personaExiste(persona.getAdn()))
-        {
-            //Si existe devuelvo la que ya existe pero no la guardo
-            return findById(persona.getAdn());
-        }
-        else
-        {
-            //Si no existe la guardo
-            return personaRepository.save(persona);
-        }
+        return personaRepository.save(persona);
     }
 
     @Override
